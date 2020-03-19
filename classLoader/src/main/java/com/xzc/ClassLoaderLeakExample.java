@@ -6,13 +6,13 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 
 /**
- *  内存泄漏的类
+ *  面试必问：用 Java 写一个内存泄漏程序
  *
  *  https://stackoverflow.com/questions/6470651/how-to-create-a-memory-leak-in-java
  *  https://mp.weixin.qq.com/s/zWyrLb28ibUBoL4xByTn1w
  *
  * @ClassName ClassLoaderLeakExample
- * @Description TODO
+ * @Description TODO 关于类加载并没有明白。
  * @Author zhichao.xing
  * @Date 2020/3/18 14:30
  * @Version 1.0
