@@ -8,14 +8,18 @@ import com.xzc.timer.schedul.QuartzManager;
 
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
+import javax.servlet.ServletRequestListener;
 import javax.servlet.annotation.WebListener;
 
 /**
  * 系统初始化程序
+ * // TODO: 2020/3/19  加载时机 与使用场景？
  *
  * @author Gavin
  * @version 1.0 Gavin 2017年6月6日 上午11:58:09
  * @title Init.java
+ * @see ServletRequestListener
+ * @see javax.servlet.ServletContextListener
  * @since 2017年6月6日 上午11:58:09
  */
 @WebListener

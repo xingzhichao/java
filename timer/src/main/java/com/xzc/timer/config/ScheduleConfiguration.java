@@ -8,7 +8,7 @@ import java.util.concurrent.Executors;
 
 /**
  * @ClassName ScheduleConfiguration
- * @Description TODO
+ * @Description schedule 的线程池
  * @Author zhichao.xing
  * @Date 2020/3/16 13:51
  * @Version 1.0

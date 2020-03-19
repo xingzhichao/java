@@ -6,7 +6,7 @@ import org.springframework.scheduling.annotation.Scheduled;
 
 /**
  * @ClassName SpringStaticCronTask
- * @Description TODO
+ * @Description schedule 简单应用
  * @Author zhichao.xing
  * @Date 2020/3/16 13:57
  * @Version 1.0
