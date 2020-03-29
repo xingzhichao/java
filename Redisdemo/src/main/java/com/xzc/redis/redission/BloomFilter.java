@@ -1,4 +1,4 @@
-package com.xzc.redis.lock.redisson;
+package com.xzc.redis.redission;
 
 import org.redisson.Redisson;
 import org.redisson.api.RBloomFilter;

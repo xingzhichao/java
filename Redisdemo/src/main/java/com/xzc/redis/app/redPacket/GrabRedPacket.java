@@ -1,4 +1,4 @@
-package com.xzc.redis.redPacket;
+package com.xzc.redis.app.redPacket;
 
 import io.lettuce.core.RedisClient;
 import io.lettuce.core.api.StatefulRedisConnection;

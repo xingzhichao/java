@@ -1,4 +1,4 @@
-package com.xzc.redis.rank;
+package com.xzc.redis.app.rank;
 
 import com.alibaba.fastjson.JSON;
 import com.xzc.redis.WebRedisApplication;
