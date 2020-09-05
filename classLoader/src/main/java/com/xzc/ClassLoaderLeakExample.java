@@ -1,5 +1,7 @@
 package com.xzc;
 
+import sun.security.provider.MD5;
+
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -22,15 +24,15 @@ public final  class ClassLoaderLeakExample {
     static volatile boolean running = true;
 
     public static void main(String[] args) throws Exception {
-        Thread thread = new LongRunningThread();
-        try {
-            thread.start();
-            System.out.println("Running, press any key to stop.");
-            System.in.read();
-        } finally {
-            running = false;
-            thread.join();
-        }
+//        Thread thread = new LongRunningThread();
+//        try {
+//            thread.start();
+//            System.out.println("Running, press any key to stop.");
+//            System.in.read();
+//        } finally {
+//            running = false;
+//            thread.join();
+//        }
     }
 
     /**
