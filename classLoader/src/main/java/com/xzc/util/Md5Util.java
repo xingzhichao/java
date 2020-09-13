@@ -1,4 +1,4 @@
-package com.xzc.javap;
+package com.xzc.util;
 
 import java.security.MessageDigest;
 
