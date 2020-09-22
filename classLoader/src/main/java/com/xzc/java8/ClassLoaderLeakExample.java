@@ -1,6 +1,4 @@
-package com.xzc;
-
-import sun.security.provider.MD5;
+package com.xzc.java8;
 
 import java.io.IOException;
 import java.nio.file.Files;
