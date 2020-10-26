@@ -15,6 +15,11 @@ import java.util.function.BiFunction;
 public class MapIsNullTest {
 
     public static void main(String[] args) {
+//        testKeyValue();
+        testMapSize();
+    }
+
+    private static void testKeyValue() {
         // key,value 允许为空
         Map map = new HashMap(12);
         map.put(null, null);
@@ -28,5 +33,20 @@ public class MapIsNullTest {
         map.forEach((key, value) -> {
             System.out.println(key + ":" + value);
         });
+    }
+
+
+    private static void testMapSize() {
+//        Map map = new HashMap(12);
+        Map map = new ConcurrentHashMap(12);
+        for (int i = 0; i < 10000; i++) {
+            map.put(i, "val" + i);
+            System.out.println("map.size变为：" + map);
+        }
+        for (int i = 0; i < 10000; i++) {
+            map.remove(i);
+            System.out.println("map.size变为：" + map);
+        }
+
     }
 }

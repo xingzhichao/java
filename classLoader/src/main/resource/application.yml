@@ -1,6 +1,2 @@
 server:
   port: 8081
-spring:
-  data:
-    mongodb:
-      uri: mongodb://192.168.174.137:27017/laohan #写你自己的Mong地址和端口及库名
