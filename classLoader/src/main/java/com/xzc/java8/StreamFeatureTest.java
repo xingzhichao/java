@@ -10,7 +10,7 @@ import java.util.stream.Stream;
  * @Date 2020/5/15 14:11
  * @Version 1.0
  **/
-public class FeatureTest {
+public class StreamFeatureTest {
 
     public static void main(String[] args) {
         //① 使用consumer接口实现方法
