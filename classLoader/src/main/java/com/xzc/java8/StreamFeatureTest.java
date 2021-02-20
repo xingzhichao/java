@@ -1,6 +1,10 @@
 package com.xzc.java8;
 
+import com.oracle.jrockit.jfr.EventInfo;
+
+import java.util.Map;
 import java.util.function.Consumer;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 /**
@@ -47,4 +51,28 @@ public class StreamFeatureTest {
         //stream.forEach(System.out::println);
     }
 
+
+//    Collectors的官方说明见：
+//    官网文档
+//
+//    如果你对Function接口不是很了解，那么在使用这些方法时会很容易出错，下面进行简单的介绍：
+//
+//    Function<T, R>
+//
+//    T—函数的输入类型
+//    R-函数的输出类型
+//
+//    也就是通过这个函数，可以将一个类型转换为另一个类型，比如下面的例子：
+//
+//    //定义一个function 输入是String类型，输出是 EventInfo 类型， EventInfo是一个类。
+//    Function<String, EventInfo> times2 = fun -> { EventInfo a = new EventInfo(); a.setName(fun); return a;};
+//
+//    String[] testintStrings={"1","2","3","4"};
+//
+//    //将String 的Array转换成map,调用times2函数进行转换
+//    Map<String,EventInfo> eventmap1=Stream.of(testintStrings).collect(Collectors.toMap(inputvalue->inputvalue, inputvalue->times2.apply(inputvalue)));
+//
+//    如果Collectors.toMap的转换过程很简单，比如输入和输出类型相同，则不需要另外定义Function,例如：
+//
+//    Map<String,String> eventmap2=Stream.of(testStrings).collect(Collectors.toMap(inputvalue->inputval
 }

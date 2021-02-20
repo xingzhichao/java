@@ -1,4 +1,4 @@
-package com.xzc.java8;
+package com.xzc.java8.failfast;
 
 import org.junit.Test;
 
@@ -53,6 +53,7 @@ public class FailFastTest {
     }
 
     /**
+     *  正确执行
      * @return void
      * @Description * 但是，这个办法的有两个弊端
      * * 1.只能进行     iterator.remove操作，add、clear等Itr中没有。
@@ -72,6 +73,7 @@ public class FailFastTest {
         while (iterator.hasNext()) {
             if (i == 3) {
                 //  删除版本- 正常 -可以删除成功
+//                Itr中的也有一个remove方法，实质也是调用了ArrayList中的remove，但增加了expectedModCount = modCount;
                 iterator.remove();
             }
             System.out.println(iterator.next());
