@@ -16,22 +16,15 @@ import java.util.concurrent.TimeUnit;
  **/
 public class TestSchedual {
 
-    private Integer count;
-    private Integer innercount;
 
-    public TestSchedual(Integer count, Integer innercount) {
-        this.count = count;
-        this.innercount = innercount;
-    }
-
-    public void deal() throws InterruptedException {
+    public static void main(String[] args) throws InterruptedException {
 
         // 创建大小为5的线程池
-        ScheduledExecutorService scheduledThreadPool = Executors.newScheduledThreadPool(count);
+        ScheduledExecutorService scheduledThreadPool = Executors.newScheduledThreadPool(5);
 
         // 周期性执行，每5秒执行一次
-        for (int i = 0; i < count; i++) {
-            Task worker1 = new Task("task-" + i, innercount);
+        for (int i = 0; i < 5; i++) {
+            Task worker1 = new Task("task-" + i, 50000);
             scheduledThreadPool.scheduleAtFixedRate(worker1, 0, 5, TimeUnit.SECONDS);
         }
 
