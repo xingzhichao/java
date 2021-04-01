@@ -1,8 +1,13 @@
 package com.xzc.java8;
 
 import com.oracle.jrockit.jfr.EventInfo;
+import com.xzc.java8.Invoice.Invoice;
 
+import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.function.Consumer;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -33,7 +38,7 @@ public class StreamFeatureTest {
         stream = Stream.of("aaa", "bbb", "ddd", "ccc", "fff");
         //lambda表达式返回的就是一个Consumer接口
         Consumer<String> consumer1 = (s) -> System.out.println(s);
-        Consumer<String> consumerTest=abc-> System.out.println(abc);
+        Consumer<String> consumerTest = abc -> System.out.println(abc);
         stream.forEach(consumer1);
         System.out.println("********************");
         // stream has already been operated upon or closed 流只能被消费一次
@@ -49,6 +54,15 @@ public class StreamFeatureTest {
         stream.forEach(consumer2);
         //更直接的方式
         //stream.forEach(System.out::println);
+
+
+//        List<Invoice> invoiceList=new ArrayList<>();
+//        BigDecimal result = invoiceList.stream()
+//                .map(Invoice::total)
+//                .filter(Objects::nonNull)
+//                .filter(i -> (i.getUnit_price() != null) && (i.getQuantity != null))
+//                .reduce(BigDecimal.ZERO, BigDecimal::add);
+
     }
 
 
