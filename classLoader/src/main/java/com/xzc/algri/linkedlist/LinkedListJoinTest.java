@@ -21,9 +21,9 @@ public class LinkedListJoinTest {
    *
    * <p>return false : 无环 true ： 有环
    */
-  public static boolean isLoop(DataNode h) {
-    DataNode p1 = h;
-    DataNode p2 = h;
+  public static boolean isLoop(Node h) {
+    Node p1 = h;
+    Node p2 = h;
     while (p2.getNext() != null && p2.getNext().getNext() != null) {
       p1 = p1.getNext();
       p2 = p2.getNext().getNext();
@@ -40,9 +40,9 @@ public class LinkedListJoinTest {
    *
    * <p>最环情况下，判断两个链表是否相交，只需要遍历链表，判断尾节点是否相等即可。
    */
-  public static boolean isJoinNoLoop(DataNode h1, DataNode h2) {
-    DataNode p1 = h1;
-    DataNode p2 = h2;
+  public static boolean isJoinNoLoop(Node h1, Node h2) {
+    Node p1 = h1;
+    Node p2 = h2;
     while (null != p1.getNext()) p1 = p1.getNext();
     while (null != p2.getNext()) p2 = p2.getNext();
     return p1 == p2;
@@ -53,7 +53,7 @@ public class LinkedListJoinTest {
      * 最环情况下找到第一个相交点
      * 方法： 算出两个链表的长度差为x,长链表先移动x步，之后两链表同时移动，直到相遇的第一个交点。
      */
-    public static DataNode getFirstJoinNode(DataNode h1,DataNode h2) {
+    public static Node getFirstJoinNode(Node h1, Node h2) {
         int length1 = 0;
         int length2 = 0;
         while(null != h1.getNext()) {
@@ -68,7 +68,7 @@ public class LinkedListJoinTest {
     }
 
 
-    private static  DataNode getNode(DataNode h1,int length1,DataNode h2,int length2){
-        return new DataNode();
+    private static Node getNode(Node h1, int length1, Node h2, int length2){
+        return new Node();
     }
 }

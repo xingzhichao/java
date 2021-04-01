@@ -4,9 +4,9 @@ import java.util.Arrays;
 
 /**
  * 快速排序
- *
+ * pivot 支点；枢轴；中心；中心点
+ * <p>
  * https://blog.csdn.net/libaineu2004/article/details/82253412
- *
  */
 public class QuickSortFirst {
 
@@ -24,7 +24,8 @@ public class QuickSortFirst {
 
 
     /**
-     *  挖坑法 移动 元素
+     * 挖坑法 移动 元素
+     *
      * @param arr
      * @param startIndex
      * @param endIndex
@@ -39,9 +40,9 @@ public class QuickSortFirst {
         int index = startIndex;
 
         //大循环在左右指针重合或者交错时结束
-        while ( right >= left  ){
+        while (right >= left) {
             //right指针从右向左进行比较
-            while ( right >= left ) {
+            while (right >= left) {
                 if (arr[right] < pivot) {
                     arr[left] = arr[right];
                     index = right;
@@ -51,7 +52,7 @@ public class QuickSortFirst {
                 right--;
             }
             //left指针从左向右进行比较
-            while ( right >= left ) {
+            while (right >= left) {
                 if (arr[left] > pivot) {
                     arr[right] = arr[left];
                     index = left;
@@ -66,11 +67,9 @@ public class QuickSortFirst {
     }
 
 
-
-
     public static void main(String[] args) {
-        int[] arr = new int[] {4,7,6,5,3,2,8,1};
-        quickSort(arr, 0, arr.length-1);
+        int[] arr = new int[]{4, 7, 6, 5, 3, 2, 8, 1};
+        quickSort(arr, 0, arr.length - 1);
         System.out.println(Arrays.toString(arr));
     }
 }
