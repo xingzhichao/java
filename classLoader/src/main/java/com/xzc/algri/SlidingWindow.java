@@ -8,6 +8,7 @@ package com.xzc.algri;
  * @Version 1.0
  **/
 public class SlidingWindow {
+
     /**
      * 滑动窗口
      * 就像描述的那样，可以理解成是一个会滑动的窗口，每次记录下窗口的状态，再找出符合条件的适合的窗口
