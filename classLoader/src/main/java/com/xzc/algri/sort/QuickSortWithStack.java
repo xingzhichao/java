@@ -18,7 +18,8 @@ import java.util.Stack;
 public class QuickSortWithStack {
 
     /**
-     * 每一次循环，都会让栈顶元素出栈，进行排序，并且按照基准元素的位置分成左右两部分，左右两部分再分别入栈。当栈为空时，说明排序已经完毕，退出循环
+     * 每一次循环，都会让栈顶元素出栈，进行排序，并且按照基准元素的位置分成左右两部分，左右两部分再分别入栈。
+     * 当栈为空时，说明排序已经完毕，退出循环
      * @param arr
      * @param startIndex
      * @param endIndex

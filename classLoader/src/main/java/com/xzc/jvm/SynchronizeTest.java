@@ -25,7 +25,7 @@ public class SynchronizeTest {
     }
 
     /**
-     * 可重入锁实战
+     * 可重入锁（递归锁）实战
      */
     public static void f() {
         if (atomicInteger.get() == 10) {
