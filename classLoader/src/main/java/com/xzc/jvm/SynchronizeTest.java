@@ -4,6 +4,8 @@ import net.bytebuddy.agent.builder.AgentBuilder;
 import org.springframework.objenesis.instantiator.util.UnsafeUtils;
 import sun.misc.Unsafe;
 
+import java.util.concurrent.atomic.AtomicInteger;
+
 /**
  * @ClassName SynchronizeTest
  * @Description TODO
@@ -12,10 +14,29 @@ import sun.misc.Unsafe;
  * @Version 1.0
  **/
 public class SynchronizeTest {
-    public static void main(String[] args) {
-        Object object=new Object();
-        UnsafeUtils.getUnsafe().monitorEnter(object);
-        UnsafeUtils.getUnsafe().monitorExit(object);
+    //        Object object = new Object();
+//        UnsafeUtils.getUnsafe().monitorEnter(object);
+//        UnsafeUtils.getUnsafe().monitorExit(object);
 
+    private static AtomicInteger atomicInteger = new AtomicInteger();
+
+    public static void main(String[] args) {
+        f();
+    }
+
+    /**
+     * 可重入锁（递归锁）实战
+     */
+    public static void f() {
+        if (atomicInteger.get() == 10) {
+            System.out.println("end");
+            return;
+        }
+        Object o = new Object();
+        synchronized (o) {
+            atomicInteger.getAndIncrement();
+            System.out.println(atomicInteger.get());
+            f();
+        }
     }
 }
