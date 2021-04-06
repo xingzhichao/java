@@ -4,6 +4,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 public class DoubleCheckLock {
+    // volatile有序性
     private volatile static DoubleCheckLock instance = null;
 //    private static DoubleCheckLock instance = null;
 
