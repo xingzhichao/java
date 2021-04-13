@@ -8,7 +8,7 @@ import java.util.Arrays;
  * https://mp.weixin.qq.com/s?__biz=MzIxMjE5MTE1Nw==&mid=2653195207&idx=2&sn=12689c6c1a92e7ec3cce4d423019ec2a&chksm=8c99f91dbbee700b8e760d06b27582037ab0713295dacf2b5a7a7f954c0032fe860aa0bf8b74&mpshare=1&scene=1&srcid=10015E0TTbxr7icCMYRdLdVs#rd
  *
  * @version + 堆排序
- *
+ * 堆  一维数组，总是二叉树的父子节点 相对应。是完全二叉树。
  */
 @Slf4j
 public class HeapOperator {
@@ -59,6 +59,7 @@ public class HeapOperator {
             parentIndex = childIndex;
             childIndex = 2 * childIndex + 1;
         }
+        //最后还是互相交换。
         array[parentIndex] = temp;
     }
 
@@ -75,30 +76,17 @@ public class HeapOperator {
         }
     }
 
-    public static void main(String[] args) {
-        int[] array = new int[]{1, 3, 2, 6, 5, 7, 8, 9, 10, 0};
-        upAdjust(array);
-        log.info(Arrays.toString(array));
-        array = new int[]{7, 1, 3, 10, 5, 2, 8, 9, 6};
-        buildHeap(array);
-        log.info(Arrays.toString(array));
-
-        log.info("-----------堆排序");
-        int[] arr = new int[]{1, 3, 2, 6, 5, 7, 8, 9, 10, 0};
-        heapSort(arr);
-        System.out.println(Arrays.toString(arr));
-    }
-
-
     /**
      * 堆排序
      *
      * @param array 待调整的堆
      */
     public static void heapSort(int[] array) {
+        System.out.println(":::"+Arrays.toString(array));
         // 1.把无序数组构建成二叉堆。
         for (int i = (array.length - 2) / 2; i >= 0; i--) {
             downAdjust(array, i, array.length);
+            System.out.println("i="+i+":::"+Arrays.toString(array));
         }
         System.out.println(Arrays.toString(array));
         // 2.循环删除堆顶元素，移到集合尾部，调节堆产生新的堆顶。
@@ -108,7 +96,23 @@ public class HeapOperator {
             array[i] = array[0];
             array[0] = temp;
             // 下沉调整最大堆
+            System.out.println("="+Arrays.toString(array));
             downAdjust(array, 0, i);
         }
     }
+    public static void main(String[] args) {
+//        int[] array = new int[]{1, 3, 2, 6, 5, 7, 8, 9, 10, 110};
+//        upAdjust(array);
+//        log.info(Arrays.toString(array));
+//        array = new int[]{7, 1, 3, 10, 5, 2, 8, 9, 6};
+//        buildHeap(array);
+//        log.info(Arrays.toString(array));
+
+        log.info("-----------堆排序");
+        int[] arr = new int[]{1, 3, 2, 6, 5, 7, 8, 9, 10, 0,11,14,15};
+        heapSort(arr);
+        System.out.println(Arrays.toString(arr));
+    }
+
+
 }

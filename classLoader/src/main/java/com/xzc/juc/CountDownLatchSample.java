@@ -15,7 +15,7 @@ public class CountDownLatchSample {
      * @return void
      * @Description CountDownLatch（同步工具类） 允许一个或多个线程等待其他线程完成操作。
      * CountDownLatch 时，需要指定一个整数值，此值是线程将要等待的操作数。
-     * 当某个线程为了要执行这些草作而等待时，需要调用 await 方法。
+     * 当某个线程为了要执行这些操作而等待时，需要调用 await 方法。
      * await 方法让线程进入休眠状态直到所有等待的操作完成为止。
      * 当等待的某个操作执行完成，它使用 countDown 方法来减少 CountDownLatch 类的内部计数器。
      * 当内部计数器递减为 0 时， CountDownLatch 会唤醒所有调用 await 方法而休眠的线程们。
