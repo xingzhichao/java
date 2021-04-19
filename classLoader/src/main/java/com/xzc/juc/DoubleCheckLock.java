@@ -29,6 +29,9 @@ public class DoubleCheckLock {
     }
 
     public static void main(String[] args) {
+        DoubleCheckLock instance1 = getInstance();
+        System.out.println(instance1);
+
 //        ExecutorService executorService = Executors.newFixedThreadPool(100);
 //        Runnable runnable = new Runnable() {
 //            @Override
@@ -53,16 +56,15 @@ public class DoubleCheckLock {
 
 //        executorService.shutdown();
 
-
-        for (int i = 0; i < 100; i++) {
-            final int num = i;
-            new Thread(new Runnable() {
-                public void run() {
-                    DoubleCheckLock instance = getInstance();
-                    System.out.println(instance);
-                }
-            }).start();
-        }
-
+//
+//        for (int i = 0; i < 100; i++) {
+//            final int num = i;
+//            new Thread(new Runnable() {
+//                public void run() {
+//                    DoubleCheckLock instance = getInstance();
+//                    System.out.println(instance);
+//                }
+//            }).start();
+//        }
     }
 }
