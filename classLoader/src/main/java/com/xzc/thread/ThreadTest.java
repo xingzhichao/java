@@ -49,6 +49,8 @@ public class ThreadTest {
                     }
                 }
             });
+            // 守护线程
+//            thread.setDaemon(true);
             thread.start();
             //见下面注释
 //            thread.join();
@@ -57,6 +59,7 @@ public class ThreadTest {
              * 并非 网上说的：park开头的方法来阻塞当前线程，unpark来唤醒被阻塞的线程。
              */
 //            LockSupport.park();
+//            LockSupport.unpark(thread);
         }
         System.out.println("main 执行完毕");
     }
