@@ -1,7 +1,5 @@
 package com.xzc.thread;
 
-import java.util.concurrent.locks.LockSupport;
-
 /**
  * @ClassName ThreadTest
  * @Description java线程是内核级线程（KLT）

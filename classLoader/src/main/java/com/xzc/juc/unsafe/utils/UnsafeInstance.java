@@ -1,4 +1,4 @@
-package com.xzc.juc.utils;
+package com.xzc.juc.unsafe.utils;
 
 import sun.misc.Unsafe;
 
@@ -12,6 +12,11 @@ import java.lang.reflect.Field;
  * @description :
  */
 public class UnsafeInstance {
+
+    //
+    private UnsafeInstance() {
+
+    }
 
     /**
      * 反射获取unsafe对象

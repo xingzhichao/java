@@ -1,6 +1,6 @@
 package com.xzc.juc.unsafe;
 
-import com.xzc.juc.utils.UnsafeInstance;
+import com.xzc.juc.unsafe.utils.UnsafeInstance;
 import sun.misc.Unsafe;
 
 /**

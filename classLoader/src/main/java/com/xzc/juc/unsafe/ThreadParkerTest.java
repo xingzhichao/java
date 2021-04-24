@@ -17,7 +17,7 @@ public class ThreadParkerTest {
             @Override
             public void run() {
                 System.out.println("thread - is running----");
-                LockSupport.park();//阻塞当前线程
+                LockSupport.park(); //阻塞当前线程
                 System.out.println("thread is over-----");
             }
         });
