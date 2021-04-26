@@ -1,7 +1,11 @@
 package com.xzc.java8;
 
+import org.junit.Test;
+
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 import java.util.function.BiFunction;
 
 /**
@@ -12,6 +16,33 @@ import java.util.function.BiFunction;
  * @Version 1.0
  **/
 public class MapTest {
+
+    @Test
+    public void test() {
+        Set set = new HashSet<>();
+        HashMap map = new HashMap();
+        for (int i = 0; i < 1000000; i++) {
+            String key = "Xzc" + i;
+            map.put(key, "i" + i);
+            int h;
+            set.add((h = key.hashCode()) ^ (h >>> 16));
+            if (i == 100000) {
+                System.out.println("i");
+            }
+            if (i == 1000000 - 100) {
+                System.out.println("i");
+            }
+        }
+        System.out.println(map.size());
+        System.out.println(set.size());
+
+        for (int i = 0; i < 1000000; i++) {
+            map.remove(i);
+            if (i == 1000000 - 10) {
+                System.out.println("i");
+            }
+        }
+    }
 
     public static void main(String[] args) {
         //map 新特性
