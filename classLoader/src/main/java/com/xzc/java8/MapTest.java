@@ -1,6 +1,7 @@
 package com.xzc.java8;
 
 import org.junit.Test;
+import org.springframework.util.StringUtils;
 
 import java.util.HashMap;
 import java.util.HashSet;
@@ -16,6 +17,24 @@ import java.util.function.BiFunction;
  * @Version 1.0
  **/
 public class MapTest {
+
+    /**
+     * HashMap 中 key 和 value 都允许为 null。 key 为 null 的键值对永远都放在以
+     * table[0]为头结点的链表中。
+     **/
+    @Test
+    public void testHashKey() {
+        int h, n = 16;
+        String key = null;
+        int hash;
+        if (StringUtils.isEmpty(key)) {
+            hash = 0;
+        } else {
+            hash = (h = key.hashCode()) ^ (h >>> 16);
+        }
+        int i = (n - 1) & hash;
+        System.out.println("key 为 null 的键值对永远都放在以table[0]为头结点的链表中。" + i);
+    }
 
     @Test
     public void test() {
