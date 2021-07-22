@@ -135,21 +135,23 @@ public class MapTest {
         System.out.println(map.merge(8, "88", (oldValue, newValue) -> oldValue + newValue));//88 -》key不存在则新增
         System.out.println(map.merge(11, "11", (old, newValue) -> null));//null -》返回值为null,删除该节点
         System.out.println(map.toString());//{0=val_0, 1=val_1, 2=val_2, 3=val_3, 4=val_4, 5=val_5, 8=88, 10=700000}
+
         /** 9:
          * computeIfAbsent(K key,Functionsuper K, ? extends V> mappingFunction):
          * 根据key做匹配Node，（匹配不到则新建然后重排）
          * 如果Node有value，则直接返回oldValue，
-         * 如果没有value则根据Function接口的apply方法获取value，返回value。
+         * 如果没有value则根据Function接口的apply方法获取value ,返回value。
          * Function接口的apply的入参为key，调用computeIfAbsent时重写Function接口可以根据key进行逻辑处理，
          * apply的返回值即为要存储的value。
          */
         System.out.println("----------------------computeIfAbsent------------------------");
         map.put(8, null);
-        System.out.println(map.toString());//{0=val_0, 1=val_1, 2=val_2, 3=val_3, 4=val_4, 5=val_5, 8=null, 10=700000}
-        System.out.println(map.computeIfAbsent(0, key -> key + "000"));//val_0  -》key值存在，直接返回oldValue
-        System.out.println(map.computeIfAbsent(7, key -> "value_" + key));//value_7 -》key匹配不到，直接新增，返回值为value
-        System.out.println(map.computeIfAbsent(8, key -> "88"));//88 -》key匹配到了，value为null，返回值作为value
-        System.out.println(map.toString());//{0=val_0, 1=val_1, 2=val_2, 3=val_3, 4=val_4, 5=val_5, 7=value_7, 8=88, 10=700000}
+        System.out.println(map.toString()); //{0=val_0, 1=val_1, 2=val_2, 3=val_3, 4=val_4, 5=val_5, 8=null, 10=700000}
+        System.out.println(map.computeIfAbsent(0, key -> key + "000")); //val_0  -》key值存在，直接返回oldValue
+        System.out.println(map.computeIfAbsent(7, key -> "value_" + key)); //value_7 -》key匹配不到，直接新增，返回值为value
+        System.out.println(map.computeIfAbsent(8, key -> "88")); //88 -》key匹配到了，value为null，返回值作为value
+        System.out.println(map.toString()); //{0=val_0, 1=val_1, 2=val_2, 3=val_3, 4=val_4, 5=val_5, 7=value_7, 8=88, 10=700000}
+
         /** 10:
          * V computeIfPresent(K key,BiFunction remappingFunction)：
          * 根据key做匹配，如果匹配不上则返回null,匹配上根据BiFunction的apply方法获取value，返回value。
@@ -174,5 +176,7 @@ public class MapTest {
          * computeIfPresent：key,value作为参数，存在,原来的值为null不做操作，否则返回值作为新的value覆盖原来；不存在，不做操作；返回值为null删除该节点
          *
          */
+        int[] returnVal= new int[]{0,0};
+        returnVal[0]=1;
     }
 }

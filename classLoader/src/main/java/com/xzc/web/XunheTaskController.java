@@ -1,9 +1,12 @@
 package com.xzc.web;
 
+import com.alibaba.fastjson.JSON;
 import com.xzc.web.common.CallbackBody;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 /**
  * 巡河任务- 设置
@@ -37,6 +40,7 @@ public class XunheTaskController {
     @PostMapping(value = "update")
     public CallbackBody<LookConfig> updateByBean(@RequestBody LookConfig config) {
         logger.info("update={}",config.toString());
+        List<LookConfig> lookConfigs = JSON.parseArray("", LookConfig.class);
         return new CallbackBody<>(CallbackBody.CALLBACK_STATUS_SUCESS, "修改巡河配置成功!", null);
     }
 }

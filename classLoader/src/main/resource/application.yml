@@ -1,5 +1,5 @@
 server:
-  port: 8081
+  port: 6689
   #tomcat 工作线程设置为1
   tomcat:
     max-threads: 1

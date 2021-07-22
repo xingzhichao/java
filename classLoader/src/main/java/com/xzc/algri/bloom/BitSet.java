@@ -13,6 +13,15 @@ import java.util.Random;
  * >>      :     右移运算符，num >> 1,相当于num除以2
  * <p>
  * >>>    :     无符号右移，忽略符号位，空位都以0补齐
+ * <p>
+ * 正数无符号右移
+ * 无符号右移运算符和右移运算符的主要区别在于负数的计算，因为无符号右移是高位补0，移多少位补多少个0。
+ * <p>
+ * 负数无符号右移
+ * -6的二进制是6的二进制取反再加1,
+ * 6的二进制也就是0000 0000 0000 0000 0000 0000 0000 0110，
+ * 取反后加1为1111 1111 1111 1111 1111 1111 1111 1010，
+ * 右移三位0001 1111 1111 1111 1111 1111 1111 1111
  *
  * @Author xzc
  * @Date 11:10 2021/4/26
@@ -255,23 +264,36 @@ public class BitSet implements Cloneable, java.io.Serializable {
     }
 
     public static void main(String[] args) {
-        int[] arrayToSort = SortUtils.buildRandomIntArray(10000000);
+        /**
+         * @Description 8+4+2+1
+         **/
+        System.out.println(15 >> 1);
+        System.out.println(-15 >> 1);
 
-        BitSet bitSet = new BitSet(100000000);
-
-        for (int elem : arrayToSort) {
-            bitSet.set(elem);
-        }
-
-        Random generator = new Random();
-        for (int i = 0; i < 100; i++) {
-            int rand = generator.nextInt(100000000);
-            if (bitSet.get(rand)) {
-                System.out.println("Number: " + rand + " is in array ...");
-            } else {
-                System.out.println("Number: " + rand + " is not in array ...");
-            }
-        }
+//        System.out.println(15 >>> 1);
+//        System.out.println("========");
+//        System.out.println(16 >> 1);
+//        System.out.println(16 >>> 1);
+        System.out.println("---------------");
+//        System.out.println(-15 >>> 1);
+        System.out.println(-1 >>> 1);
+//        int[] arrayToSort = SortUtils.buildRandomIntArray(10000000);
+//
+//        BitSet bitSet = new BitSet(100000000);
+//
+//        for (int elem : arrayToSort) {
+//            bitSet.set(elem);
+//        }
+//
+//        Random generator = new Random();
+//        for (int i = 0; i < 100; i++) {
+//            int rand = generator.nextInt(100000000);
+//            if (bitSet.get(rand)) {
+//                System.out.println("Number: " + rand + " is in array ...");
+//            } else {
+//                System.out.println("Number: " + rand + " is not in array ...");
+//            }
+//        }
 
 
     }
