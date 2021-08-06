@@ -30,7 +30,14 @@ public class MapIsNullTest {
         // key,value 都不允许为空
         map = new ConcurrentHashMap(12);
         map.put(null, null);
+        int j=0;
         map.forEach((key, value) -> {
+           new Thread(new Runnable() {
+               @Override
+               public void run() {
+                   int j=0;
+               }
+           }).start();
             System.out.println(key + ":" + value);
         });
     }

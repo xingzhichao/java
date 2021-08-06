@@ -4,7 +4,7 @@ import java.util.concurrent.CountDownLatch;
 
 /**
  * @ClassName CountDownLatchSample
- * @Description TODO
+ * @Description https://zhuanlan.zhihu.com/p/139020914
  * @Author zhichao.xing
  * @Date 2021/4/5 9:58
  * @Version 1.0
@@ -34,14 +34,12 @@ public class CountDownLatchSample {
         new Thread(new SeeDoctorTask(countDownLatch)).start();
 
         /**
+         * 主线程阻塞等待计数器归零
          * @Description 查询state是否等于0 ，若等于0 继续执行下一行代码，若不等于0 ，则执行共享中断模式
-         * @Author xzc
-         * @Date 10:29 2021/4/5
-         * @return void
          **/
         countDownLatch.await();
-        new Thread(new SeeDoctorTask(countDownLatch)).start();
-        new Thread(new SeeDoctorTask(countDownLatch)).start();
         System.out.println("over - " + (System.currentTimeMillis() - now));
+//        new Thread(new SeeDoctorTask(countDownLatch)).start();
+//        new Thread(new SeeDoctorTask(countDownLatch)).start();
     }
 }

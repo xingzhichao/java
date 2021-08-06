@@ -1,5 +1,6 @@
 package com.xzc.juc;
 
+import java.util.concurrent.CyclicBarrier;
 import java.util.concurrent.Semaphore;
 
 /**
@@ -12,6 +13,10 @@ import java.util.concurrent.Semaphore;
  * @Version 1.0
  **/
 public class SemaphoreSample {
+    /**
+     * CyclicBarrier 适用再多线程相互等待，直到到达一个屏障点。并且CyclicBarrier是可重用的。
+     */
+    CyclicBarrier cyclicBarrier = new CyclicBarrier(10);
 
     /**
      * @return void
@@ -30,7 +35,7 @@ public class SemaphoreSample {
 //        Semaphore semaphore2 = new Semaphore(2,true);
 
         for (int i = 0; i < 5; i++) {
-            Thread thread = new Thread(new Task(semaphore, "xzc-xing"));
+            Thread thread = new Thread(new Task(semaphore));
             thread.setName("xzc" + i);
             thread.start();
         }
@@ -39,7 +44,7 @@ public class SemaphoreSample {
     static class Task extends Thread {
         Semaphore semaphore;
 
-        public Task(Semaphore semaphore, String name) {
+        public Task(Semaphore semaphore) {
             this.semaphore = semaphore;
         }
 
@@ -60,19 +65,20 @@ public class SemaphoreSample {
                 semaphore.acquire(1);//获取许可 tryacquire 尝试获取许可
                 System.out.println(Thread.currentThread().getName() + ":acquire at-" + System.currentTimeMillis());
                 Thread.sleep(1000);
+
+//                boolean b = semaphore.hasQueuedThreads();
+//                System.out.println(Thread.currentThread().getName() + "等待队列里是否还存在等待线程" + b);
+//                int queueLength = semaphore.getQueueLength();
+//                System.out.println(Thread.currentThread().getName() + "获取等待队列里阻塞的线程数" + queueLength);
+
                 System.out.println(Thread.currentThread().getName() + ":release at-" + System.currentTimeMillis());
-
-                boolean b = semaphore.hasQueuedThreads();
-                System.out.println(Thread.currentThread().getName() + "等待队列里是否还存在等待线程" + b);
-                int queueLength = semaphore.getQueueLength();
-                System.out.println(Thread.currentThread().getName() + "获取等待队列里阻塞的线程数" + queueLength);
-
                 semaphore.release(1);
                 //清空令牌把可用令牌数置为0，返回清空令牌的数量。
                 // private volatile int state;  CAS 设置 state 为 0
 //                semaphore.drainPermits();
-                int i = semaphore.availablePermits();// getstate 返回state
-                System.out.println("返回可用的令牌数量" + i);
+
+//                int i = semaphore.availablePermits();// getstate 返回state
+//                System.out.println("返回可用的令牌数量" + i);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
