@@ -3,3 +3,7 @@ server:
   #tomcat 工作线程设置为1
   tomcat:
     max-threads: 1
+
+spring:
+  main:
+    allow-bean-definition-overriding: true
