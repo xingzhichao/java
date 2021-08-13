@@ -22,11 +22,10 @@ public class TestAnno {
             System.out.println(key+"=====>"+value);
         }
 
-//        System.setProperty("sun.misc.ProxyGenerator.saveGeneratedFiles", "true");
+        System.setProperty("sun.misc.ProxyGenerator.saveGeneratedFiles", "true");
         //获取TestMain类上的注解对象
         HelloAnnotation annotation = TestAnno.class.getAnnotation(HelloAnnotation.class);
         //调用注解对象的say方法，并打印到控制台
         System.out.println(annotation.say());
     }
-
 }

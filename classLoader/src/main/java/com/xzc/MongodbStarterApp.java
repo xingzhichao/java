@@ -4,9 +4,10 @@ import feign.RequestInterceptor;
 import feign.RequestTemplate;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.ImportResource;
 import org.springframework.context.annotation.PropertySource;
+
 /**
  * @Description 启动类
  * @Author xzc
@@ -21,8 +22,13 @@ import org.springframework.context.annotation.PropertySource;
 public class MongodbStarterApp {
 
     public static void main(String[] args) {
-        SpringApplication.run(MongodbStarterApp.class);
+//        SpringApplication.run(MongodbStarterApp.class);
         System.out.println("项目启动成功!");
+//-------------------------------------------------
+        ConfigurableApplicationContext context = SpringApplication.run(MongodbStarterApp.class, args);
+//        HelloService service = context.getBean(HelloService.class);
+//        logger.info(service.getMessage());
+
     }
 
     /**
@@ -32,7 +38,7 @@ public class MongodbStarterApp {
      * @return
      **/
     @Configuration
-    public class MyFeignRequestInterceptor  implements RequestInterceptor {
+    public class MyFeignRequestInterceptor implements RequestInterceptor {
         @Override
         public void apply(RequestTemplate requestTemplate) {
             requestTemplate.header("Token", "your token value");
