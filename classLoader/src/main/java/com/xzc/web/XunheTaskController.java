@@ -4,6 +4,7 @@ import cn.afterturn.easypoi.excel.ExcelExportUtil;
 import cn.afterturn.easypoi.excel.entity.TemplateExportParams;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
+import com.xzc.cloud.fegin.HdServiceFeign;
 import com.xzc.web.common.CallbackBody;
 import com.xzc.web.rainfall.HttpClientUtil;
 import com.xzc.web.rainfall.RainfallResponse;
@@ -13,11 +14,14 @@ import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
@@ -34,7 +38,18 @@ public class XunheTaskController {
     Logger logger = LoggerFactory.getLogger(this.getClass());
     private static final String module = "巡河任务设置";
 
+    @Autowired
+    private HdServiceFeign hdService;
+
     private static final CloseableHttpClient httpclient;
+
+    @RequestMapping("redirect")
+    public ModelAndView alipayforward(HttpServletRequest req, HttpServletResponse resp) throws Exception {
+        String contNo = req.getParameter("contNo");
+        logger.info("重定向功能演示");
+        String url = "redirect:https://www.huaweicloud.com/zhishi/arc-13699570.html";
+        return new ModelAndView(url);
+    }
 
     static {
         RequestConfig config = RequestConfig.custom().setConnectTimeout(10000).setSocketTimeout(60000).build();
@@ -115,6 +130,19 @@ public class XunheTaskController {
     public CallbackBody<LookConfig> findAll() {
 
         return new CallbackBody<>(CallbackBody.CALLBACK_STATUS_SUCESS, "查询成功!", null);
+    }
+
+    /**
+     * @return
+     */
+    @GetMapping(value = "test")
+    public CallbackBody<LookConfig> test() {
+        LookConfig config = new LookConfig();
+        config.setId("1");
+        config.setLength(new BigDecimal(100));
+        CallbackBody update = hdService.updateTest(config);
+        logger.info(update.toJson());
+        return new CallbackBody<>(CallbackBody.CALLBACK_STATUS_SUCESS, "成功!", null);
     }
 
     /**

@@ -7,3 +7,27 @@ server:
 spring:
   main:
     allow-bean-definition-overriding: true
+#Feign 日志
+logging:
+  level:
+    com:
+      xzc: debug
+#Feign 超时配置  （存在失效的情况===== #因为指定了url就不需要走ribbon的负载均衡逻辑 ）
+ribbon:
+  ReadTimeout: 1000
+  ConnectTimeout:  1000
+# feign和ribbon的配置二选一即可（如果都配置了，会以feign的配置为准）
+feign:
+  client:
+    config:
+      #这个代表 服务，default为任意服务，可以指定服务名来指定调用该服务时的超时时间
+      default:
+        connectTimeout: 1000
+        readTimeout: 1000
+hystrix:
+  command:
+    HdServiceFeign#updateTest():
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 11000

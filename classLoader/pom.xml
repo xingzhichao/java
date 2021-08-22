@@ -163,7 +163,11 @@
             <artifactId>easypoi-annotation</artifactId>
             <version>4.1.0</version>
         </dependency>
-
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-crypto</artifactId>
+            <version>5.2.0.RELEASE</version>
+        </dependency>
     </dependencies>
 
     <dependencyManagement>
